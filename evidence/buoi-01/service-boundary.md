@@ -103,88 +103,26 @@ Service nào gọi đến service này?
 
 Có thể vẽ bằng Mermaid, draw.io, Ludichart hoặc ảnh chụp sơ đồ.
 
-<svg width="100%" viewBox="0 0 680 460" role="img">
-  <title>Sơ đồ hệ thống Nhóm 3 - WL</title>
-  <desc>Camera Stream, Core Business Service và AI Admin gửi request tới API Gateway bên trong system boundary. API Gateway kết nối hai chiều với AI Vision Core, AI Vision Core ghi log vào Log Database.</desc>
-  <defs>
-    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-      <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-    <marker id="arr2" viewBox="0 0 10 10" refX="2" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M8 1L2 5L8 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </marker>
-  </defs>
+```mermaid
+flowchart LR
+    CamStream[Camera Stream]
+    CoreBiz[Core Business Service]
+    Admin[AI Admin]
 
-  <!-- System boundary -->
-  <rect x="240" y="24" width="416" height="412" rx="16" fill="none" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="7 4"/>
-  <text class="ts" x="448" y="18" text-anchor="middle" dominant-baseline="central" style="font-size:11px">System boundary — Nhóm 3 - WL</text>
+    subgraph Group[System Boundary: Nhóm 3 - WL]
+        direction TB
+        API[API Gateway / Endpoints]
+        AICore[AI Vision Core]
+        DB[(Log Database)]
 
-  <!-- External actors -->
-  <g class="node c-teal">
-    <rect x="24" y="60" width="172" height="44" rx="8" stroke-width="0.5"/>
-    <text class="th" x="110" y="82" text-anchor="middle" dominant-baseline="central">Camera Stream</text>
-  </g>
-  <g class="node c-teal">
-    <rect x="24" y="208" width="172" height="44" rx="8" stroke-width="0.5"/>
-    <text class="th" x="110" y="230" text-anchor="middle" dominant-baseline="central">Core Business</text>
-  </g>
-  <g class="node c-teal">
-    <rect x="24" y="356" width="172" height="44" rx="8" stroke-width="0.5"/>
-    <text class="th" x="110" y="378" text-anchor="middle" dominant-baseline="central">AI Admin</text>
-  </g>
+        API <--> AICore
+        AICore --> DB
+    end
 
-  <!-- API Gateway -->
-  <g class="node c-purple">
-    <rect x="272" y="178" width="160" height="56" rx="8" stroke-width="0.5"/>
-    <text class="th" x="352" y="198" text-anchor="middle" dominant-baseline="central">API Gateway</text>
-    <text class="ts" x="352" y="218" text-anchor="middle" dominant-baseline="central">/ Endpoints</text>
-  </g>
-
-  <!-- AI Vision Core -->
-  <g class="node c-coral">
-    <rect x="488" y="134" width="144" height="56" rx="8" stroke-width="0.5"/>
-    <text class="th" x="560" y="154" text-anchor="middle" dominant-baseline="central">AI Vision Core</text>
-    <text class="ts" x="560" y="174" text-anchor="middle" dominant-baseline="central">Detection engine</text>
-  </g>
-
-  <!-- Log Database -->
-  <g class="node c-gray">
-    <rect x="488" y="280" width="144" height="56" rx="8" stroke-width="0.5"/>
-    <text class="th" x="560" y="300" text-anchor="middle" dominant-baseline="central">Log Database</text>
-    <text class="ts" x="560" y="320" text-anchor="middle" dominant-baseline="central">Persistent storage</text>
-  </g>
-
-  <!-- Camera Stream → API -->
-  <path d="M196 82 L248 82 L248 192 L270 192" fill="none" stroke="var(--color-text-tertiary)" stroke-width="1" marker-end="url(#arr)"/>
-  <text class="ts" x="226" y="76" text-anchor="middle">POST /detect</text>
-
-  <!-- Core Business → API -->
-  <path d="M196 230 L270 230" fill="none" stroke="var(--color-text-tertiary)" stroke-width="1" marker-end="url(#arr)"/>
-  <text class="ts" x="233" y="224" text-anchor="middle">GET /detect.</text>
-
-  <!-- AI Admin → API -->
-  <path d="M196 378 L248 378 L248 222 L270 222" fill="none" stroke="var(--color-text-tertiary)" stroke-width="1" marker-end="url(#arr)"/>
-  <text class="ts" x="226" y="394" text-anchor="middle">GET /health</text>
-
-  <!-- API → Camera Stream (response) -->
-  <path d="M272 192 L248 192 L248 104 L196 104" fill="none" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
-
-  <!-- API → Core Business (response) -->
-  <path d="M272 216 L232 216 L232 252 L196 252" fill="none" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
-
-  <!-- API ↔ AI Vision Core -->
-  <path d="M432 196 L486 172" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" marker-end="url(#arr)"/>
-  <path d="M486 182 L432 206" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" marker-end="url(#arr)"/>
-
-  <!-- AI Vision Core → Log Database -->
-  <path d="M560 190 L560 278" fill="none" stroke="var(--color-text-secondary)" stroke-width="1" marker-end="url(#arr)"/>
-  <text class="ts" x="574" y="238" text-anchor="start">log</text>
-
-  <!-- Legend -->
-  <line x1="272" y1="440" x2="306" y2="440" stroke="var(--color-text-tertiary)" stroke-width="1" marker-end="url(#arr)"/>
-  <text class="ts" x="312" y="444" text-anchor="start">Request</text>
-  <line x1="390" y1="440" x2="424" y2="440" stroke="var(--color-border-secondary)" stroke-width="1" stroke-dasharray="5 3" marker-end="url(#arr)"/>
-  <text class="ts" x="430" y="444" text-anchor="start">JSON response</text>
-</svg>
+    CamStream -- "POST /detect" --> API
+    CoreBiz -- "GET /detections" --> API
+    Admin -- "GET /health" --> API
+    API -- "JSON Response" --> CamStream
+    API -- "JSON Response" --> CoreBiz
 
 
