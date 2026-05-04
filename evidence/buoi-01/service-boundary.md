@@ -2,15 +2,19 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm:
-- Lớp:
-- Thành viên:
-- Service nhóm phụ trách:
-- Sản phẩm tổng thể của lớp:
+- Tên nhóm: Nhóm số 3 - WL
+- Lớp: CNTT17-13
+- Thành viên: Nguyễn Văn Vinh, Đỗ Văn Vinh, Bạch Ngọc Lương, Lại Thành Đoàn
+- Service nhóm phụ trách: AI Vision
+- Sản phẩm tổng thể của lớp: Product A
 
 ## 2. Actor
 
-Ai tương tác với hệ thống/service?
+- Hệ thống Camera IoT (Camera Stream)
+- Hệ thống Backend Nghiệp vụ (Core Business)
+- Quản trị viên AI (AI Administrator)
+- Nhân viên An ninh / Quản lý Giám sát
+- Người dùng (Sinh viên / Giảng viên)
 
 ## 3. System Boundary
 
