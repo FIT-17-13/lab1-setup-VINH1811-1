@@ -101,6 +101,5 @@ Service nào gọi đến service này?
 - Core Business Service: Gọi để lấy kết quả phân tích (VD: Hệ thống bãi giữ xe lấy biển số, Hệ thống an ninh lấy cảnh báo rủi ro).
 ## 8. Sơ đồ minh họa
 
-Có thể vẽ bằng Mermaid, draw.io, Ludichart hoặc ảnh chụp sơ đồ.
 ![System Diagram](./diagram.svg)
 
