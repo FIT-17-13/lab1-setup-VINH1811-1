@@ -2,7 +2,7 @@
 
 ## 1. Thông tin nhóm
 
-- Tên nhóm: Nhóm số 3 - WL
+- Tên nhóm: Nhóm số 2 - WL
 - Lớp: CNTT17-13
 - Thành viên: Nguyễn Văn Vinh, Đỗ Văn Vinh, Bạch Ngọc Lương, Lại Thành Đoàn
 - Service nhóm phụ trách: AI Vision

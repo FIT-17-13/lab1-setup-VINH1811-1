@@ -6,7 +6,7 @@ Thư mục này dùng để nộp minh chứng thiết lập môi trường lab.
 
 - Họ tên: Nguyễn Văn Vinh
 - Mã sinh viên: 1771020752
-- Nhóm: 3 
+- Nhóm: 2
 - Vai trò dự kiến trong nhóm: Leader
 - Hệ điều hành: Window
 - Ghi chú:
